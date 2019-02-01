@@ -1,0 +1,219 @@
+type Comment {
+	postId: ID!
+	commentId: String!
+	authorId: Int!
+	authorName: String!
+	createdAt: String!
+	updatedAt: String
+	content: String!
+}
+
+type CommentConnection {
+	items: [Comment]
+	nextToken: String
+}
+
+input CreateCommentInput {
+	postId: ID!
+	authorId: Int!
+	authorName: String!
+	content: String!
+}
+
+input CreatePostInput {
+	authorId: Int!
+	authorName: String!
+	messageType: Int!
+	message: String
+	schoolId: Int!
+	classroomId: Int
+	userId: Int
+}
+
+input  createPostWithMediaInput {
+	authorId: Int!
+	authorName: String!
+	messageType: Int!
+	message: String
+	schoolId: Int!
+	classroomId: Int
+	userId: Int	
+	mediaType: Int!
+	mediaFile: S3ObjectInput!
+}
+
+input DeleteCommentInput {
+	postId: ID!
+	commentId: String!
+}
+
+input DeletePostInput {
+	id: ID!
+}
+
+type Mutation {
+	createPost(input: CreatePostInput!): Post
+	createPostWithMedia(input: createPostWithMediaInput!): Post
+	updatePost(input: UpdatePostInput!): Post
+	deletePost(input: DeletePostInput!): Post
+	createComment(input: CreateCommentInput!): Comment
+	updateComment(input: UpdateCommentInput!): Comment
+	deleteComment(input: DeleteCommentInput!): Comment
+}
+
+type Post {
+	id: ID!
+	authorId: Int!
+	authorName: String!
+	createdAt: String!
+	updatedAt: String
+	messageType: Int!
+	message: String
+	mediaFile: S3Object
+	mediaType: Int
+	schoolId: Int!
+	classroomId: Int
+	userId: Int
+}
+
+type PostConnection {
+	items: [Post]
+	nextToken: String
+}
+
+type Query {
+	getPost(id: ID!): Post
+	listPosts(filter: TablePostFilterInput, limit: Int, nextToken: String): PostConnection
+	fetchPosts(
+		schoolId: Int!,
+		classroomId: Int!,
+		userId: Int!,
+		limit: Int,
+		nextToken: String
+	): PostConnection
+	fetchComments(postId: ID!, limit: Int, nextToken: String): CommentConnection
+}
+
+type S3Object {
+        bucket: String!
+        key: String!
+        region: String!	
+}
+
+type S3ObjectInput {
+        bucket: String!
+        key: String!
+        region: String!
+        localUri: String!
+        mimeType: String!
+}
+
+type Subscription {
+	#POST SUBSCRIPTIONS
+	onCreatePost(schoolId: Int!, classroomId: Int, userId: Int): Post
+		@aws_subscribe(mutations: ["createPost"])
+	onCreatePostWithMedia(schoolId: Int!, classroomId: Int, userId: Int): Post
+		@aws_subscribe(mutations: ["createPostWithMedia"])
+	onUpdatePost(schoolId: Int!, classroomId: Int, userId: Int): Post
+		@aws_subscribe(mutations: ["updatePost"])
+	onDeletePost(schoolId: Int!, classroomId: Int, userId: Int): Post
+		@aws_subscribe(mutations: ["deletePost"])
+	#COMMENT SUBSCRIPTIONS
+	onCreateComment(postId: ID!): Comment
+		@aws_subscribe(mutations: ["createComment"])
+	onUpdateComment(postId: ID!): Comment
+		@aws_subscribe(mutations: ["updateComment"])
+	onDeleteComment(postId: ID!): Comment
+		@aws_subscribe(mutations: ["deleteComment"])
+}
+
+input TableBooleanFilterInput {
+	ne: Boolean
+	eq: Boolean
+}
+
+input TableFloatFilterInput {
+	ne: Float
+	eq: Float
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	contains: Float
+	notContains: Float
+	between: [Float]
+}
+
+input TableIDFilterInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+}
+
+input TableIntFilterInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	contains: Int
+	notContains: Int
+	between: [Int]
+}
+
+input TablePostFilterInput {
+	id: TableIDFilterInput
+	authorId: TableIntFilterInput
+	authorName: TableStringFilterInput
+	createdAt: TableStringFilterInput
+	updatedAt: TableStringFilterInput
+	messageType: TableIntFilterInput
+	message: TableStringFilterInput
+	mediaURL: TableStringFilterInput
+	mediaType: TableIntFilterInput
+	schoolId: TableIntFilterInput
+	classroomId: TableIntFilterInput
+	userId: TableIntFilterInput
+}
+
+input TableStringFilterInput {
+	ne: String
+	eq: String
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	contains: String
+	notContains: String
+	between: [String]
+	beginsWith: String
+}
+
+input UpdateCommentInput {
+	postId: ID
+	commentId: String!
+	authorId: Int
+	authorName: String
+	content: String
+}
+
+input UpdatePostInput {
+	id: ID!
+	authorId: Int
+	authorName: String
+	messageType: Int
+	message: String
+	mediaURL: String
+	mediaType: Int
+	schoolId: Int
+	classroomId: Int
+	userId: Int
+}

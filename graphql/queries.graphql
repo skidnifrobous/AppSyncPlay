@@ -1,0 +1,97 @@
+# this is an auto generated file. This will be overwritten
+query GetPost($id: ID!) {
+  getPost(id: $id) {
+    id
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    messageType
+    message
+    mediaFile {
+      bucket
+      key
+      region
+    }
+    mediaType
+    schoolId
+    classroomId
+    userId
+  }
+}
+query ListPosts(
+  $filter: TablePostFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      authorId
+      authorName
+      createdAt
+      updatedAt
+      messageType
+      message
+      mediaFile {
+        bucket
+        key
+        region
+      }
+      mediaType
+      schoolId
+      classroomId
+      userId
+    }
+    nextToken
+  }
+}
+query FetchPosts(
+  $schoolId: Int!
+  $classroomId: Int!
+  $userId: Int!
+  $limit: Int
+  $nextToken: String
+) {
+  fetchPosts(
+    schoolId: $schoolId
+    classroomId: $classroomId
+    userId: $userId
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      authorId
+      authorName
+      createdAt
+      updatedAt
+      messageType
+      message
+      mediaFile {
+        bucket
+        key
+        region
+      }
+      mediaType
+      schoolId
+      classroomId
+      userId
+    }
+    nextToken
+  }
+}
+query FetchComments($postId: ID!, $limit: Int, $nextToken: String) {
+  fetchComments(postId: $postId, limit: $limit, nextToken: $nextToken) {
+    items {
+      postId
+      commentId
+      authorId
+      authorName
+      createdAt
+      updatedAt
+      content
+    }
+    nextToken
+  }
+}

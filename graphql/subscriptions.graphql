@@ -1,0 +1,106 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreatePost($schoolId: Int!, $classroomId: Int, $userId: Int) {
+  onCreatePost(
+    schoolId: $schoolId
+    classroomId: $classroomId
+    userId: $userId
+  ) {
+    id
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    messageType
+    message
+    mediaFile {
+      bucket
+      key
+      region
+    }
+    mediaType
+    schoolId
+    classroomId
+    userId
+  }
+}
+subscription OnUpdatePost($schoolId: Int!, $classroomId: Int, $userId: Int) {
+  onUpdatePost(
+    schoolId: $schoolId
+    classroomId: $classroomId
+    userId: $userId
+  ) {
+    id
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    messageType
+    message
+    mediaFile {
+      bucket
+      key
+      region
+    }
+    mediaType
+    schoolId
+    classroomId
+    userId
+  }
+}
+subscription OnDeletePost($schoolId: Int!, $classroomId: Int, $userId: Int) {
+  onDeletePost(
+    schoolId: $schoolId
+    classroomId: $classroomId
+    userId: $userId
+  ) {
+    id
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    messageType
+    message
+    mediaFile {
+      bucket
+      key
+      region
+    }
+    mediaType
+    schoolId
+    classroomId
+    userId
+  }
+}
+subscription OnCreateComment($postId: ID!) {
+  onCreateComment(postId: $postId) {
+    postId
+    commentId
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    content
+  }
+}
+subscription OnUpdateComment($postId: ID!) {
+  onUpdateComment(postId: $postId) {
+    postId
+    commentId
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    content
+  }
+}
+subscription OnDeleteComment($postId: ID!) {
+  onDeleteComment(postId: $postId) {
+    postId
+    commentId
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    content
+  }
+}

@@ -1,0 +1,47 @@
+PODS:
+  - AWSAppSync (2.6.22):
+    - AWSCore (~> 2.6.6)
+    - ReachabilitySwift (~> 4.0.0)
+    - SQLite.swift (= 0.11.4)
+  - AWSCore (2.6.32)
+  - AWSS3 (2.6.32):
+    - AWSCore (= 2.6.32)
+  - Cache (5.2.0)
+  - Imaginary (4.2.0):
+    - Cache (~> 5.0)
+  - Lightbox (2.3.0):
+    - Imaginary (~> 4.0)
+  - ReachabilitySwift (4.0.0)
+  - SQLite.swift (0.11.4):
+    - SQLite.swift/standard (= 0.11.4)
+  - SQLite.swift/standard (0.11.4)
+
+DEPENDENCIES:
+  - AWSAppSync
+  - AWSS3
+  - Lightbox
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AWSAppSync
+    - AWSCore
+    - AWSS3
+    - Cache
+    - Imaginary
+    - Lightbox
+    - ReachabilitySwift
+    - SQLite.swift
+
+SPEC CHECKSUMS:
+  AWSAppSync: 5694ffc209ce6726b58a9cfd3bc49086d7120bd1
+  AWSCore: bfb49938a3a4eb190bc68edf1fa9e90969de8fa2
+  AWSS3: 5c2c57693f78ef3930bc6e267a1702182f3ceaa1
+  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
+  Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
+  Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
+  ReachabilitySwift: e67b2cab4d5386053673d8a7421b5981e5f08259
+  SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
+
+PODFILE CHECKSUM: ac9d0e884f304c14e2bea42ab062b814784e317a
+
+COCOAPODS: 1.6.0.beta.1

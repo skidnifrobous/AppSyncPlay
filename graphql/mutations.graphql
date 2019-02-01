@@ -1,0 +1,94 @@
+# this is an auto generated file. This will be overwritten
+mutation CreatePost($input: CreatePostInput!, $file: S3ObjectInput) {
+  createPost(input: $input, file: $file) {
+    id
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    messageType
+    message
+    mediaFile {
+      bucket
+      key
+      region
+    }
+    mediaType
+    schoolId
+    classroomId
+    userId
+  }
+}
+mutation UpdatePost($input: UpdatePostInput!) {
+  updatePost(input: $input) {
+    id
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    messageType
+    message
+    mediaFile {
+      bucket
+      key
+      region
+    }
+    mediaType
+    schoolId
+    classroomId
+    userId
+  }
+}
+mutation DeletePost($input: DeletePostInput!) {
+  deletePost(input: $input) {
+    id
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    messageType
+    message
+    mediaFile {
+      bucket
+      key
+      region
+    }
+    mediaType
+    schoolId
+    classroomId
+    userId
+  }
+}
+mutation CreateComment($input: CreateCommentInput!) {
+  createComment(input: $input) {
+    postId
+    commentId
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    content
+  }
+}
+mutation UpdateComment($input: UpdateCommentInput!) {
+  updateComment(input: $input) {
+    postId
+    commentId
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    content
+  }
+}
+mutation DeleteComment($input: DeleteCommentInput!) {
+  deleteComment(input: $input) {
+    postId
+    commentId
+    authorId
+    authorName
+    createdAt
+    updatedAt
+    content
+  }
+}
